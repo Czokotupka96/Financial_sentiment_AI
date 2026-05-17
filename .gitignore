@@ -1,0 +1,20 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyCharm specific settings
+.idea/
+
+.venv/
+venv/
+env/
+
+# link to dataset kaggle in README.md
+Data/
+data/
+*.csv
+
+# OS generated files
+.DS_Store
+Thumbs.db
