@@ -1,13 +1,22 @@
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
-# loading the data adding column names 'sentiment' and 'text'
+# loading data
 df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
-# seeing what is in the data
-print("first 5 rows of data:")
+print("original data:")
 print(df.head())
-print("\n")
 
-# how many statements in each sentiment category
-print("dataset breakdwon")
-print(df['sentiment'].value_counts())
+# initialize label encoder:
+encoder = LabelEncoder()
+
+# convert text labels : ('positive', 'negative', 'neutral') into numbers
+df['label'] = encoder.fit_transform(df['sentiment'])
+
+print("\ndata after label encoding:")
+print(df[['sentiment', 'label', 'text']].head(10))
+
+# encoder mapping
+print("\nencoder mapping:")
+for i, item in enumerate(encoder.classes_):
+    print(f"{item}  -->  {i}")
