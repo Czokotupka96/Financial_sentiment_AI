@@ -42,7 +42,7 @@ combinations = list(itertools.product(lstm_units_options, dropout_options, learn
 best_accuracy = 0
 best_params = {}
 
-print("starting the grid search... grab a coffee, this will take a few minutes.\n")
+print("starting the grid search\n")
 
 for i, (units, dropout, lr) in enumerate(combinations):
     print(f"run {i + 1}/8 | units: {units}, dropout: {dropout}, learning rate: {lr}...", end=" ", flush=True)
@@ -81,7 +81,7 @@ for i, (units, dropout, lr) in enumerate(combinations):
         best_accuracy = accuracy
         best_params = {'units': units, 'dropout': dropout, 'lr': lr}
 
-print("\n--- grid search complete ---")
+print("\ngrid search complete:")
 print(f"best baseline to beat was: 0.6900")
 print(f"best lstm accuracy: {best_accuracy:.4f}")
 print(f"winning parameters: {best_params}")
