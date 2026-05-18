@@ -93,7 +93,7 @@ for headline in custom_headlines:
 
     print(f">> AI GUESS: {sentiment_text.upper()} (Confidence: {confidence:.1f}%)")
 
-# --- INTERACTIVE LIVE DEMO ---
+# interactive live demo
 
 print("\n" + "=" * 40)
 print("LIVE DEMO: TYPE YOUR OWN HEADLINES")
