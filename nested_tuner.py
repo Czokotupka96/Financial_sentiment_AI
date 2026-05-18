@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout, Bidirection
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 
-# 1. load and prep the data (using the entire dataset)
+# load and prep the data (using the entire dataset)
 df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
 encoder = LabelEncoder()
@@ -22,19 +22,19 @@ df['label'] = encoder.fit_transform(df['sentiment'])
 text_data = df['text'].values
 labels = df['label'].values
 
-# 2. tokenize and pad
+# tokenize and pad
 vocab_size = 5000
 tokenizer = Tokenizer(num_words=vocab_size, oov_token="<OOV>")
 tokenizer.fit_on_texts(text_data)
 padded_data = pad_sequences(tokenizer.texts_to_sequences(text_data), maxlen=50, padding='post', truncating='post')
 
-# 3. set up the grid search parameters (the outer loop)
+# set up the grid search parameters (the outer loop)
 lstm_units_options = [32, 64]
 dropout_options = [0.3, 0.5]
 learning_rates = [0.001, 0.0005]
 combinations = list(itertools.product(lstm_units_options, dropout_options, learning_rates))
 
-# 4. set up the cross-validation (the inner loop)
+# set up the cross-validation (the inner loop)
 kfold = KFold(n_splits=5, shuffle=True, random_state=42)
 
 best_f1_score = 0
@@ -43,12 +43,11 @@ all_results = []
 
 print(
     f"starting nested cross-validation: {len(combinations)} combinations x 5 folds = {len(combinations) * 5} total runs.")
-print("grab a coffee (or lunch). this is going to take a while...\n")
 start_time = time.time()
 
 # --- THE OUTER LOOP (PARAMETERS) ---
 for i, (units, dropout, lr) in enumerate(combinations):
-    print(f"--- testing combo {i + 1}/{len(combinations)} | units: {units}, dropout: {dropout}, lr: {lr} ---")
+    print(f"testing combo {i + 1}/{len(combinations)} | units: {units}, dropout: {dropout}, lr: {lr}")
 
     fold_accuracies = []
     fold_f1_scores = []
@@ -118,8 +117,6 @@ total_time = (time.time() - start_time) / 60
 # print the final leaderboard
 print("=" * 50)
 print(f"NESTED CROSS-VALIDATION COMPLETE IN {total_time:.1f} MINUTES")
-print("=" * 50)
 print(f"the absolute best parameters (based on highest average f1-score):")
 print(best_params)
 print(f"champion average f1-score: {best_f1_score:.4f}")
-print("=" * 50)
