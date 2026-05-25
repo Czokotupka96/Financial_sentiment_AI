@@ -12,13 +12,14 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 
 # load and prep the data
-print("loading data...")
 df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
 encoder = LabelEncoder()
 df['label'] = encoder.fit_transform(df['sentiment'])
 
 X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=42)
+
+print(f"\ntraining on {len(X_train)} headlines. testing on {len(X_test)} headlines.")
 
 # tokenize and pad
 vocab_size = 5000

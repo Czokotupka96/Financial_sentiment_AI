@@ -9,22 +9,11 @@ from sklearn.metrics import classification_report
 # loading data
 df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
-print("original data:")
-print(df.head())
-
 # initialize label encoder
 encoder = LabelEncoder()
 
 # convert text labels ('positive', 'negative', 'neutral') into numbers
 df['label'] = encoder.fit_transform(df['sentiment'])
-
-print("\ndata after label encoding:")
-print(df[['sentiment', 'label', 'text']].head(10))
-
-# encoder mapping
-print("\nencoder mapping:")
-for i, item in enumerate(encoder.classes_):
-    print(f"{item}  -->  {i}")
 
 # split data into training and testing sets (80/20 split)
 X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=42)
