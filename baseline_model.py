@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], tes
 
 print(f"\ntraining on {len(X_train)} headlines. testing on {len(X_test)} headlines.")
 
-# vectorize the text using tf-idf (turning words into math)
+# vectorize the text using tf-idf
 vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
 X_train_vectorized = vectorizer.fit_transform(X_train)
 X_test_vectorized = vectorizer.transform(X_test)

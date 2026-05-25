@@ -33,7 +33,7 @@ X_test_padded = pad_sequences(tokenizer.texts_to_sequences(X_test), maxlen=50, p
 weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
 weight_dict = dict(enumerate(weights))
 
-# the champion model (using your nested cv winners)
+# the champion model (using the nested cv winners)
 print("building the model")
 model = Sequential([
     Embedding(input_dim=vocab_size, output_dim=64),
