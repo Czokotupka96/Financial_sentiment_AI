@@ -12,7 +12,7 @@ from tensorflow.keras.optimizers import Adam
 import itertools
 
 # load and prep data exactly the same as before
-df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
+df = pd.read_csv('../Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
 encoder = LabelEncoder()
 df['label'] = encoder.fit_transform(df['sentiment'])

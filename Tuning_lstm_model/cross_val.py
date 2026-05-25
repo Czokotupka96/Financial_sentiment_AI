@@ -11,7 +11,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 
 # load data
-df = pd.read_csv('Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
+df = pd.read_csv('../Data/all-data.csv', names=['sentiment', 'text'], encoding='latin-1')
 
 encoder = LabelEncoder()
 df['label'] = encoder.fit_transform(df['sentiment'])
