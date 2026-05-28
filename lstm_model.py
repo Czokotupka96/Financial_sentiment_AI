@@ -119,3 +119,5 @@ while True:
     sentiment_text = encoder.inverse_transform([sentiment_index])[0]
 
     print(f">> AI GUESS: {sentiment_text.upper()} (Confidence: {confidence:.1f}%)")
+
+# sometimes likes to break (just rerun), but most of the time has stellar performance
