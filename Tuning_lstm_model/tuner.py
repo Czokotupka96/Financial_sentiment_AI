@@ -29,7 +29,7 @@ X_test_padded = pad_sequences(tokenizer.texts_to_sequences(X_test), maxlen=50, p
 weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
 weight_dict = dict(enumerate(weights))
 
-# --- NEW: THE GRID SEARCH LOOP ---
+# --- THE GRID SEARCH LOOP ---
 
 # the parameters we want to test
 lstm_units_options = [32, 64]

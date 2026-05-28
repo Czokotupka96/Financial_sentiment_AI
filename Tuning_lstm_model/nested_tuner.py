@@ -120,3 +120,6 @@ print(f"NESTED CROSS-VALIDATION COMPLETE IN {total_time:.1f} MINUTES")
 print(f"the absolute best parameters (based on highest average f1-score):")
 print(best_params)
 print(f"champion average f1-score: {best_f1_score:.4f}")
+
+
+# rerun this a couple of times, to get the true best parameters

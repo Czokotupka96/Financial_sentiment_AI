@@ -38,7 +38,7 @@ print("building the model")
 model = Sequential([
     Embedding(input_dim=vocab_size, output_dim=64),
     Bidirectional(LSTM(64)),  # winning units
-    Dropout(0.5),  # winning dropout
+    Dropout(0.3),  # winning dropout
     Dense(32, activation='relu'),
     Dense(3, activation='softmax')
 ])
