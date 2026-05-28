@@ -74,7 +74,7 @@ for i, (units, dropout, lr) in enumerate(combinations):
         optimizer = Adam(learning_rate=lr)
         model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-        early_stop = EarlyStopping(monitor='val_loss', patience=2, restore_best_weights=True)
+        early_stop = EarlyStopping(monitor='val_loss', patience=8, restore_best_weights=True)
 
         # train silently (verbose=0)
         model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test),
