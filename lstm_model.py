@@ -106,7 +106,7 @@ while True:
     if user_input.lower() == 'quit':
         break
 
-    # prep the user's text just like we prepped the training data
+    # prep the text just like we prepped the training data
     user_seq = tokenizer.texts_to_sequences([user_input])
     user_padded = pad_sequences(user_seq, maxlen=50, padding='post', truncating='post')
 

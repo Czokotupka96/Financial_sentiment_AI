@@ -16,7 +16,7 @@ df = pd.read_csv('../Data/all-data.csv', names=['sentiment', 'text'], encoding='
 encoder = LabelEncoder()
 df['label'] = encoder.fit_transform(df['sentiment'])
 
-# we don't split 80/20 here, k-fold handles the splitting
+# k-fold handles the splitting
 text_data = df['text'].values
 labels = df['label'].values
 
@@ -41,7 +41,7 @@ for train_index, test_index in kfold.split(padded_data):
     weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
     weight_dict = dict(enumerate(weights))
 
-    # build the model with your winning parameters
+    # build the model with winning parameters
     model = Sequential([
         Embedding(input_dim=vocab_size, output_dim=64),
         Bidirectional(LSTM(32)),
