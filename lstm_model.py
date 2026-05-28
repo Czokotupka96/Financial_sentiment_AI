@@ -45,7 +45,7 @@ model = Sequential([
 
 optimizer = Adam(learning_rate=0.001)  # winning learning rate
 model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-early_stop = EarlyStopping(monitor='val_loss', patience=6, restore_best_weights=True)
+early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
 # train it
 print("\ntraining the final model...")
